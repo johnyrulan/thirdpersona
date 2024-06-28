@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@fleek-platform/cli": "^2.8.6"
+  }
+}
