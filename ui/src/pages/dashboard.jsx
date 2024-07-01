@@ -61,7 +61,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="flex-1 h-screen bg-gray-100">
+        <div className="flex-1 bg-gray-100 min-h-screen pb-10">
             <div className="w-3/4 mx-auto px-2 space-y-4">
                 <header className="bg-gray-800 rounded-b-3xl shadow px-6 py-4 flex flex-row justify-between space-x-2">
                     <a href="/" className="text-3xl text-white font-bold">ThirdPersona</a>
@@ -70,6 +70,17 @@ const Dashboard = () => {
                         <img src="https://fleek.xyz/svg/fleek-logo.svg" alt="" />
                     </div>
                 </header>   
+                <div className="bg-white flex-1 p-8 border rounded-xl shadow">
+                    <p className="text-gray-600">
+                        ThirdPersona is a web3 analytics tool (like Mixpanel for web3) that that works seamlessly with SmartWallets & the web3 experience. ThirdPersona is built on the Fleek Platform utilizing Fleek Functions for its backend.
+                    </p>
+
+                    <div className="flex flex-row space-x-1 my-3">
+                        <a href="/example/product" className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full">
+                            Go to Example Product Page
+                        </a>
+                    </div>
+                </div>                
                 <div className="flex flex-row space-x-2">
                     <div className="bg-white flex-1 p-8 border rounded-xl shadow">
                         <h1 className="font-bold text-gray-500 text-lg">Total Visitors</h1>
@@ -119,7 +130,14 @@ const Dashboard = () => {
                                 (selectedTable === TableOption.Events) && 
                                 events.map((e, i) => (
                                     <tr key={i}>
-                                        <td className="border p-4">{ e.name }</td>
+                                        {
+                                            (e.name.startsWith('https://')) ?
+                                            <td className="border p-4">
+                                                <img src={e.name} className="w-24 h-24"></img>
+                                            </td>
+                                            :
+                                            <td className="border p-4">{ e.name }</td>
+                                        }                                        
                                         <td className="border p-4">{ e.eventType }</td>
                                         <td className="border p-4">{ e.user }</td>
                                         <td className="border p-4">{ e.date }</td>

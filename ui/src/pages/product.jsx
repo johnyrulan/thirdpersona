@@ -19,11 +19,7 @@ const Product = () => {
 
     const thirdPersona = new ThirdPersona();
     
-    useEffect(() => {
-        console.log(thirdPersona)
-        // ThirdPersona.provider.on('accountsChanged', () => {
-        //     setIsSignedIn(true)
-        // })
+    useEffect(() => {        
         ThirdPersona.provider.on('connect', () => {
             setIsSignedIn(true)
         })
@@ -34,13 +30,22 @@ const Product = () => {
         thirdPersona.logEvent("Purchased Relaxed Fit Jeans", "Purchase", await thirdPersona.getAccount())
     }
 
+    async function selectImage(img) {
+        setSelectedImg(img)
+
+        if (isSignedIn) {
+            await thirdPersona.logEvent(img, "SelectedImage", await thirdPersona.getAccount())
+        }
+    }
+
     return (
         <div className="flex-1">
             <div className="w-3/4 mx-auto px-2">
                 <header className="py-2 border-b border-gray-200 px-4 py-4  flex flex-row justify-between items-center">
                     <a href="/" className="font-bold text-3xl">Web3Store</a>
-                    <div>
-                        <CreateWalletButton title='Connect Wallet (15% Off)'/>
+                    <div className="flex flex-row items-center space-x-3">
+                        <a href="/" className="text-blue-500 hover:text-blue-600 font-semibold">Go back to Dashboard</a>
+                        <CreateWalletButton title='Connect Wallet'/>
                     </div>
                 </header>
 
@@ -50,7 +55,7 @@ const Product = () => {
                         <div className="flex flex-row items-center gap-2 flex-wrap mt-4">
                             {
                                 images.map((i, index) => (
-                                    <div key={index} className="w-20 h-20 cursor-pointer" onClick={() => { setSelectedImg(i) }}>
+                                    <div key={index} className="w-20 h-20 cursor-pointer" onClick={() => { selectImage(i) }}>
                                         <img className="w-20 h-20" src={i}/>
                                     </div>
                                 ))
