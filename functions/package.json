@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "deploy-create-event": "npx fleek functions deploy --name tp-create-event --path ./createEventFn.js --envFile ./.env",
+    "deploy-get-events": "npx fleek functions deploy --name tp-get-events --path ./getEventsFn.js --envFile ./.env",
+    "deploy-get-users": "npx fleek functions deploy --name tp-get-users --path ./getUsersFn.js --envFile ./.env",
+    "deploy-create-user": "npx fleek functions deploy --name tp-create-user --path ./createUserFn.js --envFile ./.env",
+    "deploy-all": "npm run deploy-create-event && npm run deploy-get-events && npm run deploy-get-users && npm run deploy-create-user"
+  },
+  "devDependencies": {
+    "@fleek-platform/cli": "^2.8.6"
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  }
+}
