@@ -83,7 +83,7 @@ const Dashboard = () => {
                 </div>                
                 <div className="flex flex-row space-x-2">
                     <div className="bg-white flex-1 p-8 border rounded-xl shadow">
-                        <h1 className="font-bold text-gray-500 text-lg">Total Visitors</h1>
+                        <h1 className="font-bold text-gray-500 text-lg">Total Logs</h1>
                         <h2 className="font-bold text-2xl">{ users.length }</h2>
                     </div>
                     <div className="bg-white flex-1 p-8 border rounded-xl shadow">
